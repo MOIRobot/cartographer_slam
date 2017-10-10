@@ -3,6 +3,7 @@
 这个项目主目录是 :https://github.com/MOIRobot/MOI_Robot_Winter
 如何安装ros?     :http://wiki.ros.org/indigo/Installation
 如何学习ros?     :http://wiki.ros.org/cn/ROS/Tutorials/
+谷歌cartographer :https://google-cartographer-ros.readthedocs.io/en/latest/#
 
 
 1,如何拷贝本项目到本地
@@ -23,15 +24,15 @@
 	执行以下命令
 	3.1 安装ninja　插件
 	$sudo apt-get update
-	$sudo apt-get install -y python-wstool python-rosdep ninja-buil
+	$sudo apt-get install -y python-wstool python-rosdep ninja-build
 	3.2 安装依赖
 	$rosdep update
-	$rosdep install--from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
+	$rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 	3.3 编译
 	$catkin_make_isolated --install --use-ninja
 	$source install_isolated/setup.bash
 	3.2 把bash文件添加到主目录的终端启动文件里 这样子每次终端启动时 就可以自动找到这个项目目录
-	$echo "source /your.path/cartographer_slam/install_isolated/setup.bash" >> ~/.bashrc
+	$echo "source ~/cartographer_slam/install_isolated/setup.bash" >> ~/.bashrc
 	$source ~/.bashrc
 4,使用git推送分支
 	git config --global push.default matching 将推送和远程同名的所有本地分支。
