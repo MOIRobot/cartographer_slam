@@ -21,10 +21,17 @@
 3,如何使用本项目
 	git 复制完成以后 进入这个目录
 	执行以下命令
-	3.1 编译这个项目
-	$catkin_make  
+	3.1 安装ninja　插件
+	$sudo apt-get update
+	$sudo apt-get install -y python-wstool python-rosdep ninja-buil
+	3.2 安装依赖
+	$rosdep update
+	$rosdep install--from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
+	3.3 编译
+	$catkin_make_isolated --install --use-ninja
+	$source install_isolated/setup.bash
 	3.2 把bash文件添加到主目录的终端启动文件里 这样子每次终端启动时 就可以自动找到这个项目目录
-	$echo "source /your.path/MOI_Robot_Winter/devel/setup.bash" >> ~/.bashrc
+	$echo "source /your.path/cartographer_slam/install_isolated/setup.bash" >> ~/.bashrc
 	$source ~/.bashrc
 4,使用git推送分支
 	git config --global push.default matching 将推送和远程同名的所有本地分支。
@@ -40,50 +47,4 @@
 		git pull master origin/master 跟新远程最新的master分支到本地
 		git merge dev  将dev分支合并到master分支
 		git push origin master 将本地master分支推送到远程master
-
-	
-This is a project for MOI robot! And this is an ROS workspace!
-
-The homepage is        :https://github.com/MOIRobot/MOI_Robot_Winter
-how to install ros?    :http://wiki.ros.org/indigo/Installation
-and how to learn ros?  :http://wiki.ros.org/cn/ROS/Tutorials/
-
-
-1,how to copy this project to local computer?
-	git clone https://github.com/MOIRobot/cartographer_slam.git
-	OR
-	Use SSH but this is only for robot members
-	git clone git@github.com:MOIRobot/cartographer_slam.git
-	
-2,how to add ssh secret keys?
-	$ssh-keygen -t rsa -C "your_email@example.com"
-	then
-	$cd ~/.ssh
-	$ls
-	find the id_rsa.pub file copy the context to the github accout profile 
-
-3,how to use this project?
-	After you have copied this project to you computer
-	3.1 compile this project
-	$cd MOI_Robot_Winter/
-	$catkin_make  
-	3.2 It's convenient if the ROS environment variables are automatically added to your bash session every time a new shell is launched:
-	$echo "source /your.path/MOI_Robot_Winter/devel/setup.bash" >> ~/.bashrc
-	$source ~/.bashrc
-5,how to use git to make a new branch and merge branch
-	5.1, first pull the newest project to your computer
-		$git pull master origin/master
-	5.2, make a new branch
-		create a new branch
-		$git branch dev 
-		change your git to this branch
-		$git checkout dev 
-	5.3, how to merge branch to master 
-		$git checkout master 
-		$git pull master origin/master 
-		$git merge dev  
-		$git push origin master 
-
-
-
 
